@@ -17,7 +17,7 @@ public class Opiskelijat {
     public void tulostaAsukkaat(String kaupunki) {
         System.out.println("\nKaupungissa olevat opiskelijat:");
         for (Opiskelija o : opiskelijat) {
-            if (Objects.equals(o.osoiteTiedot.getPostitoimipaikka(), kaupunki)) {
+            if (Objects.equals(o.getOsoiteTiedot().getPostitoimipaikka(), kaupunki)) {
                 System.out.println(o);
             }
         }
@@ -31,4 +31,3 @@ public class Opiskelijat {
         }
     }
 }
-

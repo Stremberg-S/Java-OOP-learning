@@ -10,26 +10,44 @@ import java.util.Scanner;
 public class Teht2 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        int height, width;
+        String sign, choice;
 
-        System.out.println("Anna korkeus : ");
-        int height = sc.nextInt();
-
-        System.out.println("Anna leveys : ");
-        int width = sc.nextInt();
-
+        while (true) {
+            try {
+                System.out.println("Anna korkeus : ");
+                height = sc.nextInt();
+            } catch (Exception e) {
+                System.out.println("Vain numerot käy..");
+                sc.next();
+                continue;
+            }
+            break;
+        }
+        while (true) {
+            try {
+                System.out.println("Anna leveys : ");
+                width = sc.nextInt();
+            } catch (Exception e) {
+                System.out.println("Vain numerot käy..");
+                sc.next();
+                continue;
+            }
+            break;
+        }
         System.out.println("Anna piirtomerkki : ");
-        String sign = sc.next();
+        sign = sc.next();
 
         System.out.println("Taytetty vai ei (k = kylla, e = ei)");
-        String choice = sc.next();
+        choice = sc.next();
         sc.close();
 
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                // täytetty kuvio
+                // FILLED
                 if (Objects.equals(choice, "k"))
                     System.out.print(sign);
-                // ei täytetty kuvio
+                // NOT FILLED
                 if (Objects.equals(choice, "e")) {
                     if (i == 0 || i == height - 1)
                         System.out.print(sign);

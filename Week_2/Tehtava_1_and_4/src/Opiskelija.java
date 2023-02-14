@@ -1,53 +1,60 @@
 public class Opiskelija {
-    private String etunimi;
-    private String sukunimi;
-    private String opiskelijanumero;
-    Osoite osoiteTiedot;
+    private String _etunimi;
+    private String _sukunimi;
+    private String _opiskelijanumero;
+    private Osoite _osoiteTiedot;
 
 
     public Opiskelija() {
     }
 
     public Opiskelija(String etunimi, String sukunimi, String opiskelijanumero, Osoite osoiteTiedot) {
-        this.etunimi = etunimi;
-        this.sukunimi = sukunimi;
-        this.opiskelijanumero = opiskelijanumero;
-        this.osoiteTiedot = osoiteTiedot;
+        this();
+        setEtunimi(etunimi);
+        setSukunimi(sukunimi);
+        setOpiskelijanumero(opiskelijanumero);
+        setOsoiteTiedot(osoiteTiedot);
     }
 
 
     public String getEtunimi() {
-        return etunimi;
+        return _etunimi;
     }
 
     public void setEtunimi(String etunimi) {
-        this.etunimi = etunimi;
+        this._etunimi = etunimi;
     }
 
     public String getSukunimi() {
-        return sukunimi;
+        return _sukunimi;
     }
 
     public void setSukunimi(String sukunimi) {
-        this.sukunimi = sukunimi;
+        this._sukunimi = sukunimi;
     }
 
     public String getOpiskelijanumero() {
-        return opiskelijanumero;
+        return _opiskelijanumero;
     }
 
     public void setOpiskelijanumero(String opiskelijanumero) {
-        this.opiskelijanumero = opiskelijanumero;
+        this._opiskelijanumero = opiskelijanumero;
     }
 
+    public Osoite getOsoiteTiedot() {
+        return _osoiteTiedot;
+    }
+
+    public void setOsoiteTiedot(Osoite osoiteTiedot) {
+        this._osoiteTiedot = osoiteTiedot;
+    }
 
     @Override
     public String toString() {
-        return "Opiskelija: {" +
-                etunimi + " " +
-                sukunimi +
-                ", opiskelijanumero = " + opiskelijanumero +
-                ", Osoite: " + osoiteTiedot +
-                '}';
+        return "Opiskelija - " +
+                getEtunimi() + " " +
+                getSukunimi() +
+                ", opiskelijanumero: " + getOpiskelijanumero() +
+                ", Osoite: " + _osoiteTiedot;
     }
 }

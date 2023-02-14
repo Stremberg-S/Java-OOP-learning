@@ -1,48 +1,49 @@
 public class Osoite {
-    private String katuosoite;
-    private String postinumero;
-    private String postitoimipaikka;
+    private String _katuosoite;
+    private String _postinumero;
+    private String _postitoimipaikka;
 
 
     public Osoite() {
     }
 
     public Osoite(String katuosoite, String postinumero, String postitoimipaikka) {
-        this.katuosoite = katuosoite;
-        this.postinumero = postinumero;
-        this.postitoimipaikka = postitoimipaikka;
+        this();
+        setKatuosoite(katuosoite);
+        setPostinumero(postinumero);
+        setPostitoimipaikka(postitoimipaikka);
     }
 
 
     public String getKatuosoite() {
-        return katuosoite;
+        return _katuosoite;
     }
 
     public void setKatuosoite(String katuosoite) {
-        this.katuosoite = katuosoite;
+        this._katuosoite = katuosoite;
     }
 
     public String getPostinumero() {
-        return postinumero;
+        return _postinumero;
     }
 
     public void setPostinumero(String postinumero) {
-        this.postinumero = postinumero;
+        this._postinumero = postinumero;
     }
 
     public String getPostitoimipaikka() {
-        return postitoimipaikka;
+        return _postitoimipaikka;
     }
 
     public void setPostitoimipaikka(String postitoimipaikka) {
-        this.postitoimipaikka = postitoimipaikka;
+        this._postitoimipaikka = postitoimipaikka;
     }
 
 
     @Override
     public String toString() {
-        return katuosoite + ", " +
-                postinumero + ", " +
-                postitoimipaikka;
+        return getKatuosoite() + ", " +
+                getPostinumero() + ", " +
+                getPostitoimipaikka();
     }
 }

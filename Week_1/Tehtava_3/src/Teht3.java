@@ -10,10 +10,10 @@ import java.util.Scanner;
 
 public class Teht3 {
     public static void main(String[] args) {
-        int counter = 1;
-        double kuukaudenTulo, kokoTulo, keskiarvo, maxTulo;
-        ArrayList<Double> tulot = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
+        ArrayList<Double> tulot = new ArrayList<>();
+        double kuukaudenTulo, kokoTulo, keskiarvo, maxTulo;
+        int counter = 1;
 
         System.out.print("Anna kuukausikohtaiset tulot: ");
         System.out.println("(Negatiivinen luku lopettaa ohjelman)\n");

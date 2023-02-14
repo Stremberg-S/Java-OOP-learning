@@ -7,6 +7,7 @@ public class Osake {
 
     public static final Scanner sc = new Scanner(System.in);
 
+    
     public Osake() {
     }
 

@@ -3,10 +3,10 @@ import java.util.Scanner;
 
 
 public class Auto {
-    private String rekisterinumero;
-    private String merkki;
-    private String malli;
-    private int vuosimalli;
+    private String _rekisterinumero;
+    private String _merkki;
+    private String _malli;
+    private int _vuosimalli;
 
     Calendar cal = Calendar.getInstance();
     private final int currentYear = cal.get(Calendar.YEAR);
@@ -16,72 +16,71 @@ public class Auto {
     }
 
     public Auto(String merkki, String malli, int vuosimalli) {
-        this.merkki = merkki;
-        this.malli = malli;
-        this.vuosimalli = vuosimalli;
+        this();
+        setMerkki(merkki);
+        setMalli(malli);
+        setVuosimalli(vuosimalli);
     }
 
     public Auto(String rekisterinumero, String merkki, String malli, int vuosimalli) {
-        this.rekisterinumero = rekisterinumero;
-        this.merkki = merkki;
-        this.malli = malli;
-        this.vuosimalli = vuosimalli;
+        this(merkki, malli, vuosimalli);
+        setRekisterinumero(rekisterinumero);
     }
 
 
     public String getRekisterinumero() {
-        return rekisterinumero;
+        return _rekisterinumero;
     }
 
     public void setRekisterinumero(String rekisterinumero) {
         if (rekisterinumero.length() > 7 || !rekisterinumero.contains("-"))
-            this.rekisterinumero = "unknown";
+            this._rekisterinumero = "unknown";
         else
-            this.rekisterinumero = rekisterinumero;
+            this._rekisterinumero = rekisterinumero;
     }
 
     public String getMerkki() {
-        return merkki;
+        return _merkki;
     }
 
     public void setMerkki(String merkki) {
-        this.merkki = merkki;
+        this._merkki = merkki;
     }
 
     public String getMalli() {
-        return malli;
+        return _malli;
     }
 
     public void setMalli(String malli) {
-        this.malli = malli;
+        this._malli = malli;
     }
 
     public int getVuosimalli() {
-        return vuosimalli;
+        return _vuosimalli;
     }
 
     public void setVuosimalli(int vuosimalli) {
         if (vuosimalli < 1900 || vuosimalli > currentYear)
-            this.vuosimalli = 1900;
+            this._vuosimalli = 1900;
         else
-            this.vuosimalli = vuosimalli;
+            this._vuosimalli = vuosimalli;
     }
 
 
     public void kysyTiedot() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Anna rekisterinumero: ");
+        System.out.print("Anna rekisterinumero: ");
         setRekisterinumero(sc.nextLine().toUpperCase());
-        System.out.println("Anna merkki: ");
+        System.out.print("Anna merkki: ");
         setMerkki(sc.nextLine());
-        System.out.println("Anna malli: ");
+        System.out.print("Anna malli: ");
         setMalli(sc.nextLine());
         while (true) {
-            System.out.println("Anna vuosimalli: ");
+            System.out.print("Anna vuosimalli: ");
             try {
                 setVuosimalli(sc.nextInt());
             } catch (Exception ex) {
-                System.out.println("Vain numerot käy");
+                System.out.println("\tVain numerot käy");
                 sc.nextLine();
                 continue;
             }
@@ -90,13 +89,12 @@ public class Auto {
         sc.close();
     }
 
-
     @Override
     public String toString() {
-        return "\nAuto: " +
-                "rekisterinumero='" + rekisterinumero + '\'' +
-                ", merkki='" + merkki + '\'' +
-                ", malli='" + malli + '\'' +
-                ", vuosimalli=" + vuosimalli;
+        return "\nAuto - " +
+                "rekisterinumero: " + getRekisterinumero() +
+                ", merkki: " + getMerkki() +
+                ", malli: " + getMalli() +
+                ", vuosimalli: " + getVuosimalli();
     }
 }
