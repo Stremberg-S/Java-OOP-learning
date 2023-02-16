@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 
 
-<VBox stylesheets="@CSS/styles.css"
+<VBox stylesheets="@styles.css"
       alignment="CENTER"
       spacing="20.0"
       xmlns:fx="http://javafx.com/fxml"
