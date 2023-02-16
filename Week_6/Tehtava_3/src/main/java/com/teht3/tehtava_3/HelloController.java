@@ -3,6 +3,7 @@ package com.teht3.tehtava_3;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -48,13 +49,13 @@ public class HelloController implements Initializable {
 
 
     @FXML
-    public void onCloseButtonAction(ActionEvent event) {
+    public void onCloseButtonAction() {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
 
     @FXML
-    public void onSaveButtonAction(ActionEvent event) {
+    public void onSaveButtonAction() {
         int counter = 0;
         String name = null, type = null, date = null, buyer = null;
         double price = 0;
@@ -109,9 +110,7 @@ public class HelloController implements Initializable {
 
 
         // FADE
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0), e -> {
-            saveText.setText("");
-        }));
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0), e -> saveText.setText("")));
         // FADE-SLOWDOWN
         FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), saveText);
         fadeTransition.setFromValue(1.0);
@@ -125,6 +124,9 @@ public class HelloController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Platform.runLater(() -> {
+            productType.requestFocus();
+        });
         assert savoniaLogo != null;
         assert productType != null;
         productType.getItems().add("tietokone");
