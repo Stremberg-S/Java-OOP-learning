@@ -9,6 +9,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -124,11 +126,14 @@ public class HelloController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Platform.runLater(() -> productType.requestFocus());
+
         assert savoniaLogo != null;
         assert productType != null;
+
         productType.getItems().add("tietokone");
         productType.getItems().add("hiiri");
         productType.getItems().add("monitori");
+
         datePicker.setValue(LocalDate.now());
 
         Image image = new Image(new File(
@@ -137,5 +142,14 @@ public class HelloController implements Initializable {
         savoniaLogo.setFitHeight(240);
         savoniaLogo.setFitWidth(415);
         savoniaLogo.setPreserveRatio(true);
+
+        Platform.runLater(() -> saveButton.getScene().addEventFilter(KeyEvent.KEY_PRESSED, e -> {
+            if (e.getCode() == KeyCode.ENTER && saveButton.isFocused())
+                saveButton.fire();
+        }));
+        Platform.runLater(() -> closeButton.getScene().addEventFilter(KeyEvent.KEY_PRESSED, e -> {
+            if (e.getCode() == KeyCode.ENTER && closeButton.isFocused())
+                closeButton.fire();
+        }));
     }
 }
