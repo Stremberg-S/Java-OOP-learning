@@ -68,8 +68,7 @@ public class Tuote {
 
     @Override
     public String toString() {
-        return "Tuote: - " +
-                "nimi: " + getNimi() +
+        return "Tuote: - " + getNimi() +
                 ", tyyppi: " + getTuotetyyppi() +
                 ", kayttöönottopäivä: " + getKayttoonottopaiva() +
                 ", hinta: " + getMyyntihinta() + " €" +
