@@ -10,7 +10,7 @@ import java.io.IOException;
 
 
 public class HelloApplication extends Application {
-    private double xOffset = 300000;
+    private double xOffset = 0;
     private double yOffset = 0;
 
 
