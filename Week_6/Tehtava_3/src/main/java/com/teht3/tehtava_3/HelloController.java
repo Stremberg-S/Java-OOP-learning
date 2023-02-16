@@ -4,7 +4,6 @@ import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -124,9 +123,7 @@ public class HelloController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Platform.runLater(() -> {
-            productType.requestFocus();
-        });
+        Platform.runLater(() -> productType.requestFocus());
         assert savoniaLogo != null;
         assert productType != null;
         productType.getItems().add("tietokone");
