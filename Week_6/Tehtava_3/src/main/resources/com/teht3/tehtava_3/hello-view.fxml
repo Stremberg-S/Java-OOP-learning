@@ -9,40 +9,57 @@
 <?import javafx.scene.layout.HBox?>
 
 
-<VBox stylesheets="@CSS/styles.css" alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+<VBox stylesheets="@CSS/styles.css"
+      alignment="CENTER"
+      spacing="20.0"
+      xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.teht3.tehtava_3.HelloController">
     <HBox styleClass="image-style">
-        <ImageView styleClass="image-style"
-                   fx:id="savoniaLogo"
-                   fitWidth="30"
-                   pickOnBounds="true"/>
+        <ImageView
+                fx:id="savoniaLogo"
+                styleClass="image-style"
+                fitWidth="30"
+                pickOnBounds="true"/>
     </HBox>
-    <Label styleClass="label-verkkokauppa" text="Savonia-Verkkokauppa"/>
-    <TextField promptText="Nimi"
-               maxWidth="300"/>
-    <ComboBox promptText="Tuotetyyppi"
-              minWidth="300"
-              fx:id="type"/>
-    <DatePicker promptText="Date"
-                minWidth="300"/>
-    <TextField promptText="Myyntihinta"
-               maxWidth="300"/>
-    <TextField promptText="Ostajan nimi"
-               maxWidth="300"/>
-    <Label styleClass="line"
-           text="____________________________________________________"/>
+    <Label
+            styleClass="label-verkkokauppa"
+            text="Savonia-Verkkokauppa"/>
+    <TextField
+            fx:id="productName"
+            promptText="Nimi"
+            maxWidth="300"/>
+    <ComboBox
+            fx:id="productType"
+            promptText="Tuotetyyppi"
+            minWidth="300"/>
+    <DatePicker
+            fx:id="datePicker"
+            promptText="Date"
+            minWidth="300"/>
+    <TextField
+            fx:id="productPrice"
+            promptText="Myyntihinta"
+            maxWidth="300"/>
+    <TextField
+            fx:id="productBuyer"
+            promptText="Ostajan nimi"
+            maxWidth="300"/>
+    <Label
+            styleClass="line"
+            text="____________________________________________________"/>
     <HBox styleClass="buttons">
-        <Button text="Tallenna"
+        <Button
                 fx:id="saveButton"
+                text="Tallenna"
                 onAction="#onSaveButtonAction"
                 cancelButton="true"
                 layoutX="50.0"
                 layoutY="767.0"
                 mnemonicParsing="false"
-                prefWidth="100.0"
-                alignment="BOTTOM_CENTER"/>
-        <Button text="Sulje"
+                prefWidth="100.0"/>
+        <Button
                 fx:id="closeButton"
+                text="Sulje"
                 onAction="#onCloseButtonAction"
                 cancelButton="true"
                 layoutX="50.0"
