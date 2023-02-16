@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Button?>
@@ -8,42 +6,51 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.image.ImageView?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+<?import javafx.scene.layout.HBox?>
+
+
+<VBox stylesheets="@CSS/styles.css" alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.teht3.tehtava_3.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
-
-
-    <ImageView fx:id="savoniaLogo"
-               pickOnBounds="true"/>
+    <HBox styleClass="image-style">
+        <ImageView styleClass="image-style"
+                   fx:id="savoniaLogo"
+                   fitWidth="30"
+                   pickOnBounds="true"/>
+    </HBox>
+    <Label styleClass="label-verkkokauppa" text="Savonia-Verkkokauppa"/>
     <TextField promptText="Nimi"
                maxWidth="300"/>
     <ComboBox promptText="Tuotetyyppi"
               minWidth="300"
               fx:id="type"/>
-    <DatePicker promptText="date" minWidth="300"/>
+    <DatePicker promptText="Date"
+                minWidth="300"/>
     <TextField promptText="Myyntihinta"
                maxWidth="300"/>
     <TextField promptText="Ostajan nimi"
                maxWidth="300"/>
+    <Label styleClass="line"
+           text="____________________________________________________"/>
+    <HBox styleClass="buttons">
+        <Button text="Tallenna"
+                fx:id="saveButton"
+                onAction="#onSaveButtonAction"
+                cancelButton="true"
+                layoutX="50.0"
+                layoutY="767.0"
+                mnemonicParsing="false"
+                prefWidth="100.0"
+                alignment="BOTTOM_CENTER"/>
+        <Button text="Sulje"
+                fx:id="closeButton"
+                onAction="#onCloseButtonAction"
+                cancelButton="true"
+                layoutX="50.0"
+                layoutY="767.0"
+                mnemonicParsing="false"
+                prefWidth="100.0"/>
+    </HBox>
     <Label fx:id="saveText"/>
-    <Button text="Tallenna"
-            fx:id="saveButton"
-            onAction="#onSaveButtonAction"
-            cancelButton="true"
-            layoutX="50.0"
-            layoutY="767.0"
-            mnemonicParsing="false"
-            prefWidth="100.0"
-            alignment="BOTTOM_CENTER"/>
-    <Button text="Sulje"
-            fx:id="closeButton"
-            onAction="#onCloseButtonAction"
-            cancelButton="true"
-            layoutX="50.0"
-            layoutY="767.0"
-            mnemonicParsing="false"
-            prefWidth="100.0"/>
 </VBox>
+
 
