@@ -34,7 +34,6 @@
             minWidth="300"/>
     <DatePicker
             fx:id="datePicker"
-            promptText="Date"
             minWidth="300"/>
     <TextField
             fx:id="productPrice"

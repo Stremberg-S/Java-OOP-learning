@@ -16,7 +16,10 @@ import javafx.util.Duration;
 
 import java.io.File;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 
@@ -57,29 +60,41 @@ public class HelloController implements Initializable {
 
     @FXML
     public void onSaveButtonAction() {
-        int counter = 0;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         String name = null, type = null, date = null, buyer = null;
+        int counter = 0;
         double price = 0;
+        saveText.setText("");
 
-        // VALIDATING
+        // VALIDATING:
+        // Tuotenimi
         if (productName.getText().isEmpty()) {
             productName.setPromptText("Tuotteen nimi puuttuu.. ");
             productName.setStyle("-fx-prompt-text-fill: rgb(247,0,111);");
             counter++;
         } else name = productName.getText();
 
+        // Tuotteen tyyppi
         if (productType.getValue() == null) {
             productType.setPromptText("Tuotteen tyyppi ei valittu.. ");
             productType.setStyle("-fx-prompt-text-fill: rgb(247,0,111);");
             counter++;
         } else type = String.valueOf(productType.getValue());
 
+        // Päiväys
         if (datePicker.getValue() == null) {
             datePicker.setPromptText("Päiväys puuttuu.. ");
             datePicker.setStyle("-fx-prompt-text-fill: rgb(247,0,111);");
             counter++;
-        } else date = String.valueOf(LocalDate.parse(datePicker.getValue().toString()));
+        } else {
+            date = formatter.format(datePicker.getValue());
+            if (!isDateValid(date)) {
+                saveText.setText("Invalid date..");
+                counter++;
+            }
+        }
 
+        // Tuotteen hinta
         if (productPrice.getText().isEmpty()) {
             productPrice.setPromptText("Tuotteen hinta puuttuu.. ");
             productPrice.setStyle("-fx-prompt-text-fill: rgb(247,0,111)");
@@ -95,6 +110,7 @@ public class HelloController implements Initializable {
             }
         }
 
+        // Ostaja
         if (productBuyer.getText().isEmpty()) {
             productBuyer.setPromptText("Tuotteen ostaja puuttuu.. ");
             productBuyer.setStyle("-fx-prompt-text-fill: rgb(247,0,111);");
@@ -120,6 +136,19 @@ public class HelloController implements Initializable {
         // Chain the Timeline and FadeTransition together
         timeline.setOnFinished(e -> fadeTransition.play());
         timeline.play();
+    }
+
+
+    // DATE VALIDATING
+    public static boolean isDateValid(String date) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+            sdf.setLenient(false);
+            sdf.parse(date);
+            return true;
+        } catch (ParseException e) {
+            return false;
+        }
     }
 
 
