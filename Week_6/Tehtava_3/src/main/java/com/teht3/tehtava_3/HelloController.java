@@ -64,31 +64,32 @@ public class HelloController implements Initializable {
         String name = null, type = null, date = null, buyer = null;
         int counter = 0;
         double price = 0;
+        saveText.setStyle("-fx-text-fill: black");
         saveText.setText("");
 
         // VALIDATING:
         // Tuotenimi
         if (productName.getText().isEmpty()) {
             productName.setPromptText("Tuotteen nimi puuttuu.. ");
-            productName.setStyle("-fx-prompt-text-fill: rgb(247,0,111);");
+            productName.setStyle("-fx-prompt-text-fill: rgb(247,0,111)");
             counter++;
         } else name = productName.getText();
 
         // Tuotteen tyyppi
         if (productType.getValue() == null) {
             productType.setPromptText("Tuotteen tyyppi ei valittu.. ");
-            productType.setStyle("-fx-prompt-text-fill: rgb(247,0,111);");
+            productType.setStyle("-fx-prompt-text-fill: rgb(247,0,111)");
             counter++;
         } else type = String.valueOf(productType.getValue());
 
         // Päiväys
         if (datePicker.getValue() == null) {
             datePicker.setPromptText("Päiväys puuttuu.. ");
-            datePicker.setStyle("-fx-prompt-text-fill: rgb(247,0,111);");
             counter++;
         } else {
             date = formatter.format(datePicker.getValue());
             if (!isDateValid(date)) {
+                saveText.setStyle("-fx-text-fill: rgb(247,0,111)");
                 saveText.setText("Invalid date..");
                 counter++;
             }
@@ -113,7 +114,7 @@ public class HelloController implements Initializable {
         // Ostaja
         if (productBuyer.getText().isEmpty()) {
             productBuyer.setPromptText("Tuotteen ostaja puuttuu.. ");
-            productBuyer.setStyle("-fx-prompt-text-fill: rgb(247,0,111);");
+            productBuyer.setStyle("-fx-prompt-text-fill: rgb(247,0,111)");
             counter++;
         } else buyer = productBuyer.getText();
 
@@ -155,9 +156,6 @@ public class HelloController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Platform.runLater(() -> productType.requestFocus());
-
-        assert savoniaLogo != null;
-        assert productType != null;
 
         productType.getItems().add("tietokone");
         productType.getItems().add("hiiri");
