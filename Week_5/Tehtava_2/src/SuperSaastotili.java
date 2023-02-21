@@ -11,11 +11,11 @@ public class SuperSaastotili extends Tili {
     @Override
     public double laskeVuosikorkoTuotto() {
         double vuosiKorkoTuotto = 0;
-        if (_saldoEuroa >= 0 && _saldoEuroa <= 10000)
-            vuosiKorkoTuotto = _saldoEuroa * _vuosikorkoProsentti / 100;
-        else if (_saldoEuroa > 10000) {
+        if (getSaldoEuroa() >= 0 && getSaldoEuroa() <= 10000)
+            vuosiKorkoTuotto = getSaldoEuroa() * getVuosikorkoProsentti() / 100;
+        else if (getSaldoEuroa() > 10000) {
             _vuosikorkoProsentti += 3.0;
-            vuosiKorkoTuotto = _saldoEuroa * _vuosikorkoProsentti / 100;
+            vuosiKorkoTuotto = getSaldoEuroa() * getVuosikorkoProsentti() / 100;
         }
         return vuosiKorkoTuotto;
     }
@@ -25,6 +25,6 @@ public class SuperSaastotili extends Tili {
         System.out.printf("\n%s: Supersäästötilin saldo on %.2f €, " +
                         "korkoprosentilla %.1f " +
                         "vuosikorko on " + laskeVuosikorkoTuotto() + "€\n",
-                _omistaja, _saldoEuroa, _vuosikorkoProsentti);
+                getOmistaja(), getSaldoEuroa(), getVuosikorkoProsentti());
     }
 }
